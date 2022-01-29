@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { TodoContext } from "../../context/TodoContext";
 import { TodoCounter } from "../../components/TodoCounter";
 import { TodoSearch } from "../../components/TodoSearch";
 import { TodoList } from "../../components/TodoList/TodoList";
@@ -23,24 +24,19 @@ const Container = styled.div`
 		width: 320px;
 	}
 `;
-function AppUI({
-	loading,
-	error,
-	todosCompleted,
-	todosTotal,
-	searchValue,
-	setSearchValue,
-	toggleCompleteTodo,
-	deleteTodo,
-	searchedTodos,
-}) {
+function AppUI() {
+	//sugar sintax para render props
+	//Se desestructura el value del TodoContext.Provider
+	const { error, loading, searchedTodos, toggleCompleteTodo, deleteTodo } =
+		React.useContext(TodoContext);
+
 	return (
 		<>
 			<GlobalStyle />
 			<Card />
 			<Container>
-				<TodoCounter completed={todosCompleted} total={todosTotal} />
-				<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+				<TodoCounter />
+				<TodoSearch />
 				<TodoList>
 					{error && <p>Hubo un error, recarga la página...</p>}
 					{loading && <p>Estamos cargando...</p>}
