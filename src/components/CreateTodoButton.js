@@ -14,6 +14,7 @@ const Button = styled.button`
 	bottom: 10px;
 	left: calc(50% - 20px);
 	border: none;
+	z-index: 1;
 	&:hover {
 		cursor: pointer;
 		background-color: ${primaryColor};
@@ -31,10 +32,13 @@ const Button = styled.button`
 	}
 `;
 
-function CreateTodoButton() {
+function CreateTodoButton({ modal, setModal }) {
+	const toggleModal = () => {
+		setModal((prevState) => !prevState);
+	};
 	return (
-		<Button>
-			<MdOutlineAdd className="icon" />
+		<Button onClick={toggleModal}>
+			<MdOutlineAdd className='icon' />
 		</Button>
 	);
 }

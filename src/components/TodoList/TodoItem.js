@@ -14,7 +14,6 @@ const StyledItem = styled.li`
 	font-weight: 500;
 	color: ${textColor};
 	margin-bottom: 10px;
-	margin-right: 10px;
 	border-bottom: 1px solid lightgray;
 
 	div {
@@ -61,6 +60,12 @@ const StyledItem = styled.li`
 		text-decoration: line-through;
 		font-weight: 700;
 	}
+	p {
+		height: 25px;
+		width: 200px;
+		text-align: center;
+		overflow: hidden;
+	}
 `;
 
 function TodoItem({ id, text, completed, onToggleCompleteTodo, deleteTodo }) {
@@ -73,14 +78,14 @@ function TodoItem({ id, text, completed, onToggleCompleteTodo, deleteTodo }) {
 	return (
 		<StyledItem>
 			<div>
-				<input id={id} name={text} type="checkbox" onClick={completeTodo} />
+				<input id={id} name={text} type='checkbox' onClick={completeTodo} />
 				<label htmlFor={id} className={`label-${completed.toString()}`}>
-					<BsCheckCircleFill className="icon" />
+					<BsCheckCircleFill className='icon' />
 				</label>
 			</div>
 
 			<p className={completed.toString()}>{text}</p>
-			<TiDelete className="delete" onClick={onDelete} />
+			<TiDelete className='delete' onClick={onDelete} />
 		</StyledItem>
 	);
 }

@@ -5,6 +5,9 @@ import { primaryColor } from "../GlobalStyles";
 const List = styled.section`
 	width: 100%;
 	height: 350px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	overflow-y: scroll;
 	/* width */
 	::-webkit-scrollbar {

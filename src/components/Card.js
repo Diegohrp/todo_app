@@ -1,6 +1,7 @@
 import React from "react";
 import urlImg from "../assets/img/task_img.svg";
 import styled from "styled-components";
+import { useAddNewTodo } from "../hooks/useAddNewTodo";
 import {
 	primaryColor,
 	darkPrimaryColor,
@@ -20,6 +21,11 @@ const StyledArticle = styled.article`
 	display: none;
 	@media (min-width: 700px) {
 		display: flex;
+	}
+	form {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
 	}
 `;
 const StyledTitle = styled.h1`
@@ -55,7 +61,7 @@ const StyledInput = styled.input`
 	}
 `;
 const StyledButton = styled.button`
-	height: 40px;
+	height: 35px;
 	width: 50%;
 	background-color: ${primaryColor};
 	align-self: center;
@@ -79,13 +85,23 @@ const StyledImg = styled.img`
 	align-self: center;
 `;
 function Card() {
+	const { newTodoValue, onChange, onSubmit } = useAddNewTodo("");
 	return (
 		<StyledArticle>
 			<StyledTitle>Crear nueva tarea</StyledTitle>
-			<StyledLabel htmlFor="taskD">Nombre de la tarea</StyledLabel>
-			<StyledInput id="taskD" type="text" placeholder="Tarea pendiente" />
-			<StyledButton>Crear tarea</StyledButton>
-			<StyledImg alt="decoration" src={urlImg} />
+			<form onSubmit={onSubmit}>
+				<StyledLabel htmlFor='taskD'>Nombre de la tarea</StyledLabel>
+				<StyledInput
+					id='taskD'
+					type='text'
+					placeholder='Tarea pendiente'
+					onChange={onChange}
+					value={newTodoValue}
+				/>
+				<StyledButton type='submit'>Crear tarea</StyledButton>
+			</form>
+
+			<StyledImg alt='decoration' src={urlImg} />
 		</StyledArticle>
 	);
 }

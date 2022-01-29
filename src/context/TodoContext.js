@@ -7,8 +7,12 @@ const TodoContext = React.createContext();
 //El provider contiene toda la lógica
 //Se encarga de actualizar el estado de los componentes
 function TodoProvider(props) {
+	//Estado para el buscador
 	const [searchValue, setSearchValue] = React.useState("");
+	//Estado para el localStorage, loading y error
 	const { todos, saveTodos, loading, error } = useLocalStorage("TODOS_V1", []);
+	//Estado para abrir o cerrar el modal
+	const [modal, setModal] = React.useState(false);
 
 	//Obtener las tareas completadas
 	const todosCompleted = todos.filter((todo) => todo.completed).length;
@@ -42,6 +46,13 @@ function TodoProvider(props) {
 		saveTodos(newTodos);
 	};
 
+	//Añadir TODO
+	const addTodo = (name) => {
+		const newTodos = [...todos];
+		newTodos.push({ text: name, completed: false });
+		saveTodos(newTodos);
+	};
+
 	//Se encapsula toda la app en un Context.Provider
 	//value es un objeto que contiene lo que eran props y estado
 	return (
@@ -56,6 +67,9 @@ function TodoProvider(props) {
 				toggleCompleteTodo,
 				deleteTodo,
 				searchedTodos,
+				modal,
+				setModal,
+				addTodo,
 			}}
 		>
 			{props.children}

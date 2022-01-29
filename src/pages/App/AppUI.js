@@ -8,6 +8,8 @@ import { TodoItem } from "../../components/TodoList/TodoItem";
 import { CreateTodoButton } from "../../components/CreateTodoButton";
 import { GlobalStyle } from "../../components/GlobalStyles";
 import { Card } from "../../components/Card";
+import { Modal } from "../../components/Modal/Modal";
+import { CreateNewTodo } from "../../components/Modal/CreateNewTodo";
 
 const Container = styled.div`
 	background-color: whitesmoke;
@@ -27,8 +29,15 @@ const Container = styled.div`
 function AppUI() {
 	//sugar sintax para render props
 	//Se desestructura el value del TodoContext.Provider
-	const { error, loading, searchedTodos, toggleCompleteTodo, deleteTodo } =
-		React.useContext(TodoContext);
+	const {
+		error,
+		loading,
+		searchedTodos,
+		toggleCompleteTodo,
+		deleteTodo,
+		modal,
+		setModal,
+	} = React.useContext(TodoContext);
 
 	return (
 		<>
@@ -54,7 +63,13 @@ function AppUI() {
 						/>
 					))}
 				</TodoList>
-				<CreateTodoButton />
+				{modal && (
+					<Modal>
+						<CreateNewTodo />
+					</Modal>
+				)}
+
+				<CreateTodoButton modal={modal} setModal={setModal} />
 			</Container>
 		</>
 	);
