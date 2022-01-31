@@ -10,7 +10,9 @@ import { GlobalStyle } from "../../components/GlobalStyles";
 import { Card } from "../../components/Card";
 import { Modal } from "../../components/Modal/Modal";
 import { CreateNewTodo } from "../../components/Modal/CreateNewTodo";
-
+import { TodosLoading } from "../../components/skeletons/TodosLoading";
+import { ErrorTodos } from "../../components/skeletons/ErrorTodos";
+import { NotFoundTodos } from "../../components/skeletons/NotFoundTodos";
 const Container = styled.div`
 	background-color: whitesmoke;
 	width: 350px;
@@ -47,10 +49,10 @@ function AppUI() {
 				<TodoCounter />
 				<TodoSearch />
 				<TodoList>
-					{error && <p>Hubo un error, recarga la página...</p>}
-					{loading && <p>Estamos cargando...</p>}
-					{!loading && searchedTodos.length === 0 && (
-						<p>Crea tu primer tarea</p>
+					{error && <ErrorTodos />}
+					{loading && <TodosLoading />}
+					{!loading && !error && searchedTodos.length === 0 && (
+						<NotFoundTodos />
 					)}
 					{searchedTodos.map((item) => (
 						<TodoItem

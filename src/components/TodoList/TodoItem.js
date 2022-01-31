@@ -48,8 +48,8 @@ const StyledItem = styled.li`
 		visibility: hidden;
 	}
 	.delete {
-		width: 30px;
-		height: 30px;
+		width: 35px;
+		height: 35px;
 		cursor: pointer;
 		color: darkred;
 		&:hover {
@@ -90,4 +90,4 @@ function TodoItem({ id, text, completed, onToggleCompleteTodo, deleteTodo }) {
 	);
 }
 
-export { TodoItem };
+export { TodoItem, StyledItem };

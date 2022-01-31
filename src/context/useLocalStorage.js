@@ -5,6 +5,7 @@ function useLocalStorage(itemName, initialState) {
 	const [todos, setTodos] = React.useState(initialState);
 	const [loading, setLoading] = React.useState(true);
 	const [error, setError] = React.useState(false);
+
 	//UseEffect para simular llamada a una API
 	React.useEffect(() => {
 		setTimeout(() => {
@@ -18,12 +19,15 @@ function useLocalStorage(itemName, initialState) {
 				} else {
 					parsedTodos = JSON.parse(localStorageTodos);
 				}
+				//throw new error();
 				setTodos(parsedTodos);
+
 				setLoading(false);
 			} catch (err) {
+				setLoading(false);
 				setError(err);
 			}
-		}, 1000);
+		}, 2000);
 	}, []);
 
 	//Guardar TODO

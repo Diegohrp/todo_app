@@ -16,6 +16,7 @@ function useAddNewTodo(initialState) {
 	const onSubmit = (event) => {
 		event.preventDefault();
 		addTodo(newTodoValue);
+		setNewTodoValue("");
 		setModal(false);
 	};
 	return { newTodoValue, onCancel, onChange, onSubmit };

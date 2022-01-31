@@ -7,6 +7,7 @@ const List = styled.section`
 	height: 350px;
 	display: flex;
 	flex-direction: column;
+	align-self: center;
 	align-items: center;
 	overflow-y: scroll;
 	/* width */
@@ -33,4 +34,4 @@ function TodoList(props) {
 	return <List>{props.children}</List>;
 }
 
-export { TodoList };
+export { TodoList, List };
