@@ -61,10 +61,13 @@ const StyledItem = styled.li`
 		font-weight: 700;
 	}
 	p {
-		height: 25px;
+		//height: 25px;
 		width: 200px;
 		text-align: center;
-		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
 	}
 `;
 
