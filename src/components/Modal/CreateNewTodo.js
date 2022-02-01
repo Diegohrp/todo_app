@@ -90,4 +90,4 @@ function CreateNewTodo() {
 	);
 }
 
-export { CreateNewTodo };
+export { CreateNewTodo, Button };

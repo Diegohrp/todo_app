@@ -13,6 +13,8 @@ function TodoProvider(props) {
 	const { todos, saveTodos, loading, error } = useLocalStorage("TODOS_V1", []);
 	//Estado para abrir o cerrar el modal
 	const [modal, setModal] = React.useState(false);
+	//Advertencia de tarea existente
+	const [noAddedModal, setNoAddedModal] = React.useState({});
 
 	//Obtener las tareas completadas
 	const todosCompleted = todos.filter((todo) => todo.completed).length;
@@ -49,8 +51,15 @@ function TodoProvider(props) {
 	//Añadir TODO
 	const addTodo = (name) => {
 		const newTodos = [...todos];
-		newTodos.push({ text: name, completed: false });
-		saveTodos(newTodos);
+		const exist = newTodos.find((todo) => todo.text === name);
+		console.log(name);
+		console.log(exist);
+		if (exist) {
+			setNoAddedModal({ text: name, open: true });
+		} else {
+			newTodos.push({ text: name, completed: false });
+			saveTodos(newTodos);
+		}
 	};
 
 	//Se encapsula toda la app en un Context.Provider
@@ -59,7 +68,6 @@ function TodoProvider(props) {
 		<TodoContext.Provider
 			value={{
 				loading,
-				error,
 				todosCompleted,
 				todosTotal,
 				searchValue,
@@ -70,6 +78,8 @@ function TodoProvider(props) {
 				modal,
 				setModal,
 				addTodo,
+				setNoAddedModal,
+				noAddedModal,
 			}}
 		>
 			{props.children}

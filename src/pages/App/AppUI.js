@@ -10,6 +10,7 @@ import { GlobalStyle } from "../../components/GlobalStyles";
 import { Card } from "../../components/Card";
 import { Modal } from "../../components/Modal/Modal";
 import { CreateNewTodo } from "../../components/Modal/CreateNewTodo";
+import { NoAdded } from "../../components/Modal/NoAdded";
 import { TodosLoading } from "../../components/skeletons/TodosLoading";
 import { ErrorTodos } from "../../components/skeletons/ErrorTodos";
 import { NotFoundTodos } from "../../components/skeletons/NotFoundTodos";
@@ -39,6 +40,8 @@ function AppUI() {
 		deleteTodo,
 		modal,
 		setModal,
+		noAddedModal,
+		setNoAddedModal,
 	} = React.useContext(TodoContext);
 
 	return (
@@ -73,6 +76,14 @@ function AppUI() {
 
 				<CreateTodoButton modal={modal} setModal={setModal} />
 			</Container>
+			{noAddedModal.open && (
+				<Modal>
+					<NoAdded
+						noAddedModal={noAddedModal}
+						setNoAddedModal={setNoAddedModal}
+					/>
+				</Modal>
+			)}
 		</>
 	);
 }

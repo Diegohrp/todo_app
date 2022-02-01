@@ -32,7 +32,7 @@ const Button = styled.button`
 	}
 `;
 
-function CreateTodoButton({ modal, setModal }) {
+function CreateTodoButton({ setModal }) {
 	const toggleModal = () => {
 		setModal((prevState) => !prevState);
 	};
