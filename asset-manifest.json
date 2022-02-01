@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/Diegohrp/todo_app/static/js/main.2d2fd1d8.js",
-    "static/media/task_img.svg": "/Diegohrp/todo_app/static/media/task_img.b857d3e1c3d527e78123e577dc3ffdcf.svg",
-    "static/media/error_img.svg": "/Diegohrp/todo_app/static/media/error_img.644d3bd68e4b5cb99d7579bf408cc5b8.svg",
-    "static/media/empty_img.svg": "/Diegohrp/todo_app/static/media/empty_img.4a9160e4456470b79288e5c63596b863.svg",
-    "index.html": "/Diegohrp/todo_app/index.html",
-    "main.2d2fd1d8.js.map": "/Diegohrp/todo_app/static/js/main.2d2fd1d8.js.map"
+    "main.js": "/todo_app/static/js/main.50d41851.js",
+    "static/media/task_img.svg": "/todo_app/static/media/task_img.b857d3e1c3d527e78123e577dc3ffdcf.svg",
+    "static/media/error_img.svg": "/todo_app/static/media/error_img.644d3bd68e4b5cb99d7579bf408cc5b8.svg",
+    "static/media/empty_img.svg": "/todo_app/static/media/empty_img.4a9160e4456470b79288e5c63596b863.svg",
+    "index.html": "/todo_app/index.html",
+    "main.50d41851.js.map": "/todo_app/static/js/main.50d41851.js.map"
   },
   "entrypoints": [
-    "static/js/main.2d2fd1d8.js"
+    "static/js/main.50d41851.js"
   ]
 }
