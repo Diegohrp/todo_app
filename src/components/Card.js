@@ -84,8 +84,11 @@ const StyledImg = styled.img`
 	height: 320px;
 	align-self: center;
 `;
-function Card() {
-	const { newTodoValue, onChange, onSubmit } = useAddNewTodo("");
+function Card({ addTodo }) {
+	const { newTodoValue, onChange, onSubmit } = useAddNewTodo({
+		setModal: undefined,
+		addTodo,
+	});
 	return (
 		<StyledArticle>
 			<StyledTitle>Crear nueva tarea</StyledTitle>

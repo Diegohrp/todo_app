@@ -1,11 +1,11 @@
 import React from "react";
-import { TodoContext } from "../context/TodoContext";
+import { useTodos } from "./useTodos";
 
 function useAddNewTodo(initialState) {
 	//Se obtiene del contexto la función para añadir tarea y setModal
-	const { addTodo, setModal } = React.useContext(TodoContext);
+	const { addTodo, setModal } = initialState;
 	//Estado del componente textarea (su valor)
-	const [newTodoValue, setNewTodoValue] = React.useState(initialState);
+	const [newTodoValue, setNewTodoValue] = React.useState("");
 
 	const onCancel = () => {
 		setModal(false);
@@ -17,7 +17,9 @@ function useAddNewTodo(initialState) {
 		event.preventDefault();
 		addTodo(newTodoValue);
 		setNewTodoValue("");
-		setModal(false);
+		if (setModal !== undefined) {
+			setModal(false);
+		}
 	};
 	return { newTodoValue, onCancel, onChange, onSubmit };
 }

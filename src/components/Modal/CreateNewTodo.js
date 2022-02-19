@@ -71,8 +71,11 @@ const Form = styled.form`
 	}
 `;
 
-function CreateNewTodo() {
-	const { newTodoValue, onCancel, onChange, onSubmit } = useAddNewTodo("");
+function CreateNewTodo({ setModal, addTodo }) {
+	const { newTodoValue, onCancel, onChange, onSubmit } = useAddNewTodo({
+		setModal,
+		addTodo,
+	});
 	return (
 		<Form onSubmit={onSubmit}>
 			<label htmlFor='new-task'>Escribe tu nueva tarea</label>

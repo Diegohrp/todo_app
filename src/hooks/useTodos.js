@@ -1,12 +1,8 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
-//React Hook useContext
-const TodoContext = React.createContext();
-
-//El provider contiene toda la lógica
 //Se encarga de actualizar el estado de los componentes
-function TodoProvider(props) {
+function useTodos() {
 	//Estado para el buscador
 	const [searchValue, setSearchValue] = React.useState("");
 	//Estado para el localStorage, loading y error
@@ -61,30 +57,22 @@ function TodoProvider(props) {
 			saveTodos(newTodos);
 		}
 	};
-
-	//Se encapsula toda la app en un Context.Provider
-	//value es un objeto que contiene lo que eran props y estado
-	return (
-		<TodoContext.Provider
-			value={{
-				loading,
-				todosCompleted,
-				todosTotal,
-				searchValue,
-				setSearchValue,
-				toggleCompleteTodo,
-				deleteTodo,
-				searchedTodos,
-				modal,
-				setModal,
-				addTodo,
-				setNoAddedModal,
-				noAddedModal,
-			}}
-		>
-			{props.children}
-		</TodoContext.Provider>
-	);
+	//Se retorna todo el estado de la aplicación
+	return {
+		loading,
+		todosCompleted,
+		todosTotal,
+		searchValue,
+		setSearchValue,
+		toggleCompleteTodo,
+		deleteTodo,
+		searchedTodos,
+		modal,
+		setModal,
+		addTodo,
+		setNoAddedModal,
+		noAddedModal,
+	};
 }
-//Se exporta el contexto y la función provider
-export { TodoContext, TodoProvider };
+//Se exporta el custom hook
+export { useTodos };
