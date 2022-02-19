@@ -42,6 +42,10 @@ function AppUI() {
 		setModal,
 		noAddedModal,
 		setNoAddedModal,
+		todosCompleted,
+		todosTotal,
+		searchValue,
+		setSearchValue,
 	} = React.useContext(TodoContext);
 
 	return (
@@ -49,8 +53,9 @@ function AppUI() {
 			<GlobalStyle />
 			<Card />
 			<Container>
-				<TodoCounter />
-				<TodoSearch />
+				<TodoCounter todosCompleted={todosCompleted} todosTotal={todosTotal} />
+				<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+
 				<TodoList>
 					{error && <ErrorTodos />}
 					{loading && <TodosLoading />}

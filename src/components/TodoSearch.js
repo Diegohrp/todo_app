@@ -1,12 +1,10 @@
 import React from "react";
 import { StyledInput } from "./Card";
 import styled from "styled-components";
-import { TodoContext } from "../context/TodoContext";
 const Search = styled(StyledInput)`
 	margin-top: 20px;
 `;
-function TodoSearch() {
-	const { searchValue, setSearchValue } = React.useContext(TodoContext);
+function TodoSearch({ searchValue, setSearchValue }) {
 	const onChangeValue = (event) => {
 		//console.log(event.target.value);
 		setSearchValue(event.target.value);
