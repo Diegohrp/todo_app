@@ -57,13 +57,19 @@ function App() {
 				<TodoCounter todosCompleted={todosCompleted} todosTotal={todosTotal} />
 				<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
 
-				<TodoList>
-					{error && <ErrorTodos />}
-					{loading && <TodosLoading />}
-					{!loading && !error && searchedTodos.length === 0 && (
-						<NotFoundTodos />
+				<TodoList
+					error={error}
+					loading={loading}
+					searchedTodos={searchedTodos}
+					todosTotal={todosTotal}
+					searchValue={searchValue}
+					onError={() => <ErrorTodos />}
+					onLoading={() => <TodosLoading />}
+					EmptyTodos={() => <NotFoundTodos text='No tienes ninguna tarea' />}
+					EmptySearchResults={(searchText) => (
+						<NotFoundTodos text={`No hay resultados para ${searchText}`} />
 					)}
-					{searchedTodos.map((item) => (
+					render={(item) => (
 						<TodoItem
 							key={Math.random().toString(36).slice(2)}
 							id={Math.random().toString(36).slice(2)}
@@ -72,8 +78,20 @@ function App() {
 							onToggleCompleteTodo={toggleCompleteTodo}
 							deleteTodo={deleteTodo}
 						/>
-					))}
+					)}
+				>
+					{/* {(item) => (
+						<TodoItem
+							key={Math.random().toString(36).slice(2)}
+							id={Math.random().toString(36).slice(2)}
+							text={item.text}
+							completed={item.completed}
+							onToggleCompleteTodo={toggleCompleteTodo}
+							deleteTodo={deleteTodo}
+						/>
+					)} */}
 				</TodoList>
+
 				{modal && (
 					<Modal>
 						<CreateNewTodo setModal={setModal} addTodo={addTodo} />

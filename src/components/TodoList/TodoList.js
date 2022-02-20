@@ -31,7 +31,25 @@ const List = styled.section`
 `;
 
 function TodoList(props) {
-	return <List>{props.children}</List>;
+	const renderFunc = props.render || props.children;
+
+	return (
+		<List>
+			{props.error && props.onError()}
+			{props.loading && props.onLoading()}
+
+			{!props.loading &&
+				!props.error &&
+				!props.todosTotal &&
+				props.EmptyTodos()}
+
+			{!!props.todosTotal &&
+				!props.searchedTodos.length &&
+				props.EmptySearchResults(props.searchValue)}
+
+			{props.searchedTodos.map(renderFunc)}
+		</List>
+	);
 }
 
 export { TodoList, List };

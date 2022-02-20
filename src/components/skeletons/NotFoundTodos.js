@@ -8,11 +8,11 @@ const NotFound = styled(Container)`
 	}
 `;
 
-function NotFoundTodos() {
+function NotFoundTodos(props) {
 	return (
 		<NotFound>
 			<img alt='error img' src={notFoundURL} />
-			<p>No tienes ninguna tarea</p>
+			<p>{props.text}</p>
 		</NotFound>
 	);
 }
