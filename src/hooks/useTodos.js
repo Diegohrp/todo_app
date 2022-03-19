@@ -6,7 +6,10 @@ function useTodos() {
 	//Estado para el buscador
 	const [searchValue, setSearchValue] = React.useState("");
 	//Estado para el localStorage, loading y error
-	const { todos, saveTodos, loading, error } = useLocalStorage("TODOS_V1", []);
+	const { todos, saveTodos, loading, error, sincronizeItem } = useLocalStorage(
+		"TODOS_V1",
+		[]
+	);
 	//Estado para abrir o cerrar el modal
 	const [modal, setModal] = React.useState(false);
 	//Advertencia de tarea existente
@@ -72,6 +75,7 @@ function useTodos() {
 		addTodo,
 		setNoAddedModal,
 		noAddedModal,
+		sincronizeItem,
 	};
 }
 //Se exporta el custom hook

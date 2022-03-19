@@ -14,6 +14,8 @@ import { NoAdded } from "../../components/Modal/NoAdded";
 import { TodosLoading } from "../../components/skeletons/TodosLoading";
 import { ErrorTodos } from "../../components/skeletons/ErrorTodos";
 import { NotFoundTodos } from "../../components/skeletons/NotFoundTodos";
+import { TodoHeader } from "../../components/TodoHeader";
+import { ChangeAlertWithStorageListener } from "../../components/ChangeAlert";
 const Container = styled.div`
 	background-color: whitesmoke;
 	width: 350px;
@@ -47,6 +49,7 @@ function App() {
 		todosTotal,
 		searchValue,
 		setSearchValue,
+		sincronizeItem,
 	} = useTodos("");
 
 	return (
@@ -54,9 +57,16 @@ function App() {
 			<GlobalStyle />
 			<Card addTodo={addTodo} />
 			<Container>
-				<TodoCounter todosCompleted={todosCompleted} todosTotal={todosTotal} />
-				<TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
+				<TodoHeader loading={loading}>
+					<TodoCounter
+						todosCompleted={todosCompleted}
+						todosTotal={todosTotal}
+					/>
+					<TodoSearch
+						searchValue={searchValue}
+						setSearchValue={setSearchValue}
+					/>
+				</TodoHeader>
 				<TodoList
 					error={error}
 					loading={loading}
@@ -108,6 +118,7 @@ function App() {
 					/>
 				</Modal>
 			)}
+			<ChangeAlertWithStorageListener sincronize={sincronizeItem} />
 		</>
 	);
 }

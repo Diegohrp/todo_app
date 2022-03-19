@@ -47,7 +47,10 @@ function TodoList(props) {
 				!props.searchedTodos.length &&
 				props.EmptySearchResults(props.searchValue)}
 
-			{props.searchedTodos.map(renderFunc)}
+			{!props.loading &&
+				!props.error &&
+				!!props.todosTotal &&
+				props.searchedTodos.map(renderFunc)}
 		</List>
 	);
 }

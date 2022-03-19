@@ -5,6 +5,8 @@ function useLocalStorage(itemName, initialState) {
 	const [todos, setTodos] = React.useState(initialState);
 	const [loading, setLoading] = React.useState(true);
 	const [error, setError] = React.useState(false);
+	//Estado para sincronizar los cambios entre pestañas
+	const [sincronizedItem, setSincronizedItem] = React.useState(true);
 
 	//UseEffect para simular llamada a una API
 	React.useEffect(() => {
@@ -21,14 +23,14 @@ function useLocalStorage(itemName, initialState) {
 				}
 				//throw new error();
 				setTodos(parsedTodos);
-
 				setLoading(false);
+				setSincronizedItem(true);
 			} catch (err) {
 				setLoading(false);
 				setError(err);
 			}
 		}, 2000);
-	}, []);
+	}, [sincronizedItem]);
 
 	//Guardar TODO
 	const saveTodos = (newTodos) => {
@@ -36,7 +38,11 @@ function useLocalStorage(itemName, initialState) {
 		localStorage.setItem(itemName, stringifiedTodos);
 		setTodos(newTodos);
 	};
-	return { todos, saveTodos, loading, error };
+	const sincronizeItem = () => {
+		setLoading(true);
+		setSincronizedItem(false);
+	};
+	return { todos, saveTodos, loading, error, sincronizeItem };
 }
 
 export { useLocalStorage };

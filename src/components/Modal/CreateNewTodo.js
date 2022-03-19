@@ -93,4 +93,4 @@ function CreateNewTodo({ setModal, addTodo }) {
 	);
 }
 
-export { CreateNewTodo, Button };
+export { CreateNewTodo, Button, Save };

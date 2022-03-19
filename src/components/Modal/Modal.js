@@ -24,4 +24,4 @@ function Modal(props) {
 	);
 }
 
-export { Modal };
+export { Modal, ModalBackground };

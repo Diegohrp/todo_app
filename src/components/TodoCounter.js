@@ -6,12 +6,16 @@ const Counter = styled.h2`
 	font-size: 2.3rem;
 	font-weight: 700;
 	color: ${accentColor};
+
 	text-align: center;
+	&.true {
+		opacity: 0.25;
+	}
 `;
 
-function TodoCounter({ todosCompleted, todosTotal }) {
+function TodoCounter({ todosCompleted, todosTotal, loading }) {
 	return (
-		<Counter>
+		<Counter className={loading}>
 			Haz completado {todosCompleted} de {todosTotal} tareas
 		</Counter>
 	);
