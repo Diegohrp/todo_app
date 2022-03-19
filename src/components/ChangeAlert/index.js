@@ -1,5 +1,5 @@
 import React from "react";
-import { WithStorageListener } from "./WithStorageListener";
+import { useStorageListener } from "./useStorageListener";
 import styled from "styled-components";
 import { ModalBackground } from "../Modal/Modal";
 import { Save } from "../Modal/CreateNewTodo";
@@ -22,7 +22,8 @@ const Alert = styled(ModalBackground)`
 	}
 `;
 
-function ChangeAlert({ show, toggleShow }) {
+function ChangeAlert({ sincronize }) {
+	const { show, toggleShow } = useStorageListener(sincronize);
 	if (show) {
 		return (
 			<Alert>
@@ -40,6 +41,4 @@ function ChangeAlert({ show, toggleShow }) {
 	}
 }
 
-const ChangeAlertWithStorageListener = WithStorageListener(ChangeAlert);
-
-export { ChangeAlertWithStorageListener };
+export { ChangeAlert };

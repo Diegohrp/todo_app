@@ -15,7 +15,7 @@ import { TodosLoading } from "../../components/skeletons/TodosLoading";
 import { ErrorTodos } from "../../components/skeletons/ErrorTodos";
 import { NotFoundTodos } from "../../components/skeletons/NotFoundTodos";
 import { TodoHeader } from "../../components/TodoHeader";
-import { ChangeAlertWithStorageListener } from "../../components/ChangeAlert";
+import { ChangeAlert } from "../../components/ChangeAlert";
 const Container = styled.div`
 	background-color: whitesmoke;
 	width: 350px;
@@ -118,7 +118,7 @@ function App() {
 					/>
 				</Modal>
 			)}
-			<ChangeAlertWithStorageListener sincronize={sincronizeItem} />
+			<ChangeAlert sincronize={sincronizeItem} />
 		</>
 	);
 }
