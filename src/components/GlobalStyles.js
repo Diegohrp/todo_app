@@ -1,10 +1,10 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 const titlesFont = "'Ubuntu', sans-serif";
 const textFont = "'Inter', sans-serif";
-const primaryColor = "#673AB7";
-const darkPrimaryColor = "#512DA8";
-const accentColor = "#00BCD4";
-const textColor = "#212121";
+const primaryColor = '#673AB7';
+const darkPrimaryColor = '#512DA8';
+const accentColor = '#00BCD4';
+const textColor = '#212121';
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -14,28 +14,38 @@ const GlobalStyle = createGlobalStyle`
   html{
     font-size: 62.5%;
   }
-  #root{
-    display: grid;
-    width: 100vw;
-    height: 100vh;
-    place-items: center;
+  body{
     font-family: ${textFont};
     background: rgb(103,58,183);
     background: linear-gradient(0deg, rgba(103,58,183,0.49343487394957986) 38%, rgba(0,188,212,0.4822303921568627) 100%);
-    
+  }
+  main.todos{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
     @media (min-width:700px) {
       grid-template-columns: 1fr 1fr;
       padding: 0px 30px; 
     }
   }
+
+  main.edit{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
+  }
 `;
 
 export {
-	GlobalStyle,
-	titlesFont,
-	textFont,
-	primaryColor,
-	darkPrimaryColor,
-	textColor,
-	accentColor,
+  GlobalStyle,
+  titlesFont,
+  textFont,
+  primaryColor,
+  darkPrimaryColor,
+  textColor,
+  accentColor,
 };
